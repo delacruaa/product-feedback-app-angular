@@ -11,9 +11,12 @@ export class RoadmapListComponent implements OnInit {
   @Input() tab!: ITab
   feedbackListLocal:IFeedback[]=[]
   @Input() feedbackList:IFeedback[]=[]
-
+  constructor(private feedbackService:FeedbackService){}
   ngOnInit(): void {
-    this.feedbackListLocal =this.feedbackList.filter(item=>item.status==this.tab.title.toLocaleLowerCase())
+    this.feedbackService.getFeedbackList().subscribe((data)=> {
+      this.feedbackListLocal =this.feedbackList.filter(item=>item.status==this.tab.title.toLocaleLowerCase())
+    })
+    
   }
 
 }
