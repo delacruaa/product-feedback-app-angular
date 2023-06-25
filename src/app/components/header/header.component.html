@@ -1,0 +1,20 @@
+<header (click)="this.isDropdownOpen=false">
+    <div *ngIf="route=='/'" class="wrapper">
+        <div class="logo__wpapper">
+            <img src="/assets/logo.svg" alt="logo">
+            <p>{{suggestionCount +' Suggestions'}} </p>
+        </div>
+        <div class="sort__wrapper" (click)="openDropdown(); $event.stopPropagation()">
+            <p>Sort by : <span>{{currentContent}}  <img src="/assets/arrow.svg" alt="arrow">  </span>  </p>
+            <app-dropdown [isDropdownOpen]="isDropdownOpen" (currentContentChanged)="currentContentChanged($event)" [currentContent]="currentContent" [contents]="contents" class="dropdown"></app-dropdown>
+        </div>
+    </div>
+    <div  *ngIf="route!=='/'" class="roadmap__wrapper">
+      <app-go-back [color]="'white'" ></app-go-back>
+      <p>Roadmap</p>
+    </div>
+  <app-button [buttonClass]="'add__btn'" class="btn" routerLink="/add" >
+    <p>+ Add Feedback</p>
+    <p>+</p>
+  </app-button>
+</header>

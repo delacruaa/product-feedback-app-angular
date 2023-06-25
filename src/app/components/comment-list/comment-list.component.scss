@@ -1,0 +1,20 @@
+.wrapper {
+    width: 100%;
+    height: fit-content; 
+    padding: 32px;
+    border-radius: 10px;
+    background: var(--white); 
+    p {
+        color: var(--boldtext);
+        font-size: 18px;
+        font-weight: 700;
+        letter-spacing: -0.25px; 
+        margin-bottom: 32px;
+    }
+    
+}
+@media (max-width:690px) {
+    .wrapper {
+        padding: 28px 20px;
+    }
+}

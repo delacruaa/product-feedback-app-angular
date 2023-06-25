@@ -1,0 +1,112 @@
+.wrapper {
+    margin-top: 24px;
+    width: 100%;
+    height: 151px; 
+    padding: 28px 32px;
+    background-color: var(--white);
+    border-radius: 10px;
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    &:last-child {
+        margin-bottom: 30px;
+    }
+    .rating__wrapper {
+        cursor: pointer;
+        width: 40px;
+        height: 53px; 
+        border-radius: 10px;
+        background: var(--bg); 
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        transition: 0.3s;
+        p {
+            color: var(--boldtext);
+            text-align: center;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: -0.181px; 
+        }
+        &:hover {
+            transition: 0.3s;
+            background: var(--boldtext-hover); 
+        }
+    }
+    .rating__wrapper__active {
+        @extend .rating__wrapper;
+        background: var(--navyblue); 
+        p {
+            color: var(--white);
+        }
+        &:hover {
+            transition: 0.3s;
+            background: var(--navyblue); 
+        }
+    }
+    .text__wrapper {
+        cursor: pointer;
+        
+        .title {
+            color:  var(--boldtext);
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: -0.25px; 
+        }
+        .subtitle {
+            color: var(--text);
+            font-size: 16px;
+        }
+        .tag {
+            margin-top: 12px;
+            width: fit-content;
+            height: 30px; 
+            padding: 0 16px;
+            border-radius: 10px;
+            background: var(--bg); 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            p {
+                color: var( --navyblue);
+                font-size: 13px;
+                font-weight: 600; 
+            }
+        }
+    }
+    .comments {
+        display: flex;
+        gap: 8px;
+        margin-left: auto;
+        p {
+            color: var(--boldtext);
+            text-align: center;
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: -0.222px; 
+        }
+    }
+}
+
+.wrapper__responsive {
+    @extend .wrapper;
+    height: fit-content; 
+}
+@media(max-width:690px) {
+    .wrapper {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr auto; 
+        gap: 10px;
+        height: 300px; 
+        padding:28px 20px;
+        
+    }
+    .wrapper__responsive {
+        @extend .wrapper;
+        height: fit-content; 
+    }
+    
+}

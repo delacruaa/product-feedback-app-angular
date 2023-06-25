@@ -1,0 +1,26 @@
+<div [ngClass]="'wrapper__'+tab |lowercase">
+    <div  [ngClass]="'tab__'+tab |lowercase">
+        {{tab}}
+    </div>
+    <div class="text__wrapper" (click)="navigateToFeedbackDetails(feedback.id.toString())">
+        <p  class="title">
+           {{feedback.title}}
+        </p>
+        <p class="subtitle">
+            {{feedback.description | ellipsis}}
+        </p>
+        <div class="tag"> 
+            <p> {{feedback.category | capitalizeFirstLetter}}</p>
+        </div>
+    </div>
+    <div class="top__wrapper">
+        <div [ngClass]="feedback.upvoted? 'rating__wrapper__active' : 'rating__wrapper'" (click)="upvotedFeedback(feedback.id,feedback.upvoted,feedback.upvotes)"> 
+            <img [src]="!feedback.upvoted? '/assets/arrowRate.svg': '/assets/arrow.svg'" alt="arrow">
+            <p>{{feedback.upvotes}}</p>
+        </div>
+        <div class="comments">
+            <img src="/assets/comment.svg" alt="comment">
+            <p>{{feedback.comments?.length  || 0}}</p>
+        </div>  
+    </div>
+</div>

@@ -1,0 +1,24 @@
+<div class="mobile__header">
+    <div class="board">
+        <h1>Frontend Mentor</h1>
+        <h2>Feedback Board</h2>
+    </div>
+    <div [ngClass]="isActiveBurgerMenu? 'burger__icon__active':'burger__icon'"  (click)="toggleBurgerMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</div>
+<div  [ngClass]="isActiveBurgerMenu? 'burger__wrapper__active':'burger__wrapper'">
+    <app-sidebar ></app-sidebar>
+</div>
+<div class="container"> 
+   
+    <div class="wrapper">
+        <app-sidebar class="sidebar"></app-sidebar>
+        <div class="content">
+            <app-header ></app-header>
+            <app-feedback-list ></app-feedback-list>
+        </div>
+    </div>
+</div>

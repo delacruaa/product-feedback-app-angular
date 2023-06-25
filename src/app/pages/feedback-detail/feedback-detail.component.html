@@ -1,0 +1,11 @@
+<div class="container">
+    <div class="wrapper">
+        <div class="btn__wrapper">
+            <app-go-back></app-go-back>
+            <app-button [buttonClass]="'edit__btn'" [routerLink]="'/edit/'+id">Edit Feedback</app-button>
+        </div>
+        <app-feedback-item [feedback]="feedback" ></app-feedback-item>
+        <app-comment-list [feedback]="feedback"></app-comment-list>
+        <app-add-comment  [feedback]="feedback"></app-add-comment>
+    </div>
+</div>

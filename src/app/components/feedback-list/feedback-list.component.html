@@ -1,0 +1,17 @@
+<div class="loading__wrapper" *ngIf="loading">
+    <p>Loading...</p>
+</div>
+<div class="error__wrapper" *ngIf="error">
+    <p>Something went wrong... try later</p>
+</div>
+<div *ngIf="!error && !loading">
+    <app-feedback-item *ngFor="let feedback of feedbackListfiltered" [feedback]="feedback"></app-feedback-item>
+</div>
+<div class="empty__wrapper" *ngIf="!error && !loading && feedbackListfiltered.length==0">
+    <img src="/assets/emptyIcon.svg" alt="svg">
+    <h2 >There is no feedback yet.</h2>
+    <p>Got a suggestion? Found a bug that needs to be squashed? We love hearing about new ideas to improve our app.</p>
+    <app-button [buttonClass]="'add__btn'" routerLink="/add" >
+        + Add Feedback
+    </app-button>
+</div>

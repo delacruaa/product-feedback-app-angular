@@ -1,0 +1,18 @@
+<div class="wrapper">
+    <div class="user__wrapper">
+        <img [src]="'/assets/'+ comment.user.image.substring(21) "alt="">
+        <div class="name__wrapper">
+            <p class="name">{{comment.user.name}}</p>
+            <p class="login">@{{comment.user.username}}</p>
+        </div>
+        <button class="btn" (click)="showReplay()"  >{{isShowReply? "Hide" :"Reply"}}</button>
+    </div>
+    <p class="comment">
+        {{comment.content}}
+    </p>
+    <form  class="reply__wrapper" *ngIf="isShowReply" (submit)="addRepliesComment()">
+        <textarea  [(ngModel)]="commentText" name="commentText"  type="text"   (input)="clearError()"></textarea>
+        <app-button [type]="'submit'" [buttonClass]="'add__btn'"  >Post Reply</app-button>
+    </form>
+    
+</div>

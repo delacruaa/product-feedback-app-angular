@@ -1,0 +1,10 @@
+<div class="wrapper">
+    <p>Add Comment</p>
+    <form  (submit)="addComment()">
+        <textarea  [(ngModel)]="commentText" name="commentText"  type="text"   (input)="clearError()"></textarea>
+        <app-button [type]="'submit'" [buttonClass]="'add__btn'"  >Post Comment</app-button>
+    </form>
+    <div class="error__message">
+        {{notEmpty}}
+    </div>
+</div>

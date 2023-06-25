@@ -1,0 +1,7 @@
+<div class="wrapper">
+   
+    <h2>{{tab.title}} ({{feedbackListLocal.length}}) </h2>
+    <p>{{tab.subtitle}}</p>
+    <app-roadmap-item *ngFor="let feedback of feedbackListLocal" [tab]="tab.title" [feedback]="feedback" ></app-roadmap-item>
+    
+</div>

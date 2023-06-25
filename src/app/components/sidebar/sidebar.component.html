@@ -1,0 +1,32 @@
+<div class="wrapper">
+    <div class="board">
+        <h1>Frontend Mentor</h1>
+        <h2>Feedback Board</h2>
+    </div>
+    <div class="filter__wrapper">
+        <button [ngClass]="currentFilter==filter? 'filter__btn__active' : 'filter__btn'" *ngFor="let filter of filters" (click)="editCurrentFilter(filter)">
+           {{filter}}
+        </button>
+       
+    </div>
+    <div class="roadmap__wrapper">
+        <div class="header">
+            <p>Roadmap</p>
+            <button [routerLink]="'/roadmap'" >View</button>
+        </div>
+        <div class="roadmap">
+           <div class="block">
+                <p class="title">Planned</p>
+                <p class="count">{{plannedCount}}</p>
+           </div>
+           <div class="block">
+                <p class="title">In-Progress</p>
+                <p class="count">{{inProgressCount}}</p>
+            </div>
+            <div class="block">
+                <p class="title">Live</p>
+                <p class="count">{{liveCount}}</p>
+            </div>
+        </div>
+    </div>
+</div>

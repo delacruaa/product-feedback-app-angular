@@ -1,0 +1,7 @@
+<div class="wrapper">
+    <p>{{feedback.comments?.length || 0}} Comments</p>
+    <app-comment-item  *ngFor="let comment of feedback?.comments; let i =index" [commentIndex] = "i" [comment]="comment" ></app-comment-item>
+    <p *ngIf="!feedback.comments?.length" >
+        Write first comment
+    </p>
+</div>

@@ -1,0 +1,39 @@
+.add__btn {
+    border: none;
+    border-radius: 10px;
+    background: var(--purple); 
+    cursor: pointer;
+    padding: 12px 24px;
+    color: var(--bg);
+    font-size: 14px;
+    font-weight: 700; 
+    transition: 0.3s;
+    &:hover {
+        transition: 0.3s;
+        background: var(--purple-hover); 
+    }
+}
+
+.edit__btn {
+    @extend .add__btn;
+    background-color: var(--navyblue);
+    &:hover {
+        background: var(--navyblue-hover); 
+    }
+}
+
+.cancel__btn {
+    @extend .add__btn;
+    background-color: var(--darkblue);
+    &:hover {
+        background: var(--boldtext); 
+    }
+}
+
+.delete__btn {
+    @extend .add__btn;
+    background-color: var(--pink);
+    &:hover {
+        background: var( --pink); 
+    }
+}

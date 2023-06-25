@@ -1,1 +1,37 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'ngx-toastr/toastr';
+
+* {
+    
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+
+}
+:root {
+    --purple:#AD1FEA;
+    --purple-hover:#C75AF6;
+    --navyblue:#4661E6;
+    --navyblue-hover:#8397F8;
+    --darkblue: #373F68;
+    --white:#FFFFFF;
+    --bg:#F2F4FF;
+    --boldtext: #3A4374;
+    --boldtext-hover:#CFD7FF;
+    --text:#647196;
+    --pink:#F49F85;
+    --blue:#62BCFA;
+    
+  }
+
+body {
+    font-family: 'Jost', sans-serif;
+    background: var(--bg);
+    font-weight: 400;
+}
+
+.container {
+  max-width: 1120px;
+  padding: 0 10px;
+  margin: 0 auto;
+}
+

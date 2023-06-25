@@ -1,0 +1,29 @@
+<div class="container">
+   
+    <div class="wrapper" >
+        <app-header [route]="'roadmap'"></app-header>
+        <div class="loading__wrapper" *ngIf="loading">
+            <p>Loading...</p>
+        </div>
+        <div class="error__wrapper" *ngIf="error">
+            <p>Something went wrong... try later</p>
+        </div>
+        <div *ngIf="!error && !loading">
+            <div class="tabs__wrapper">
+                <div [ngClass]="currentTab ==tab.title? 'tab__'+currentTab  : 'tab' " *ngFor="let tab of tabs">
+                    <p [ngClass]="currentTab ==tab.title? 'active': 'not__active'" (click)="changeCurrentTab(tab.title)" >{{tab.title}}</p>
+                </div>
+            </div>
+            <div class="list">
+                <app-roadmap-list [feedbackList]="feedbackList" *ngFor="let tab of tabs"  [tab]="tab"></app-roadmap-list>
+            
+            </div>
+
+            <div class="mobile__list">
+                <app-roadmap-list [feedbackList]="feedbackList" *ngIf="currentTab==tabs[0].title" [tab]="tabs[0]"></app-roadmap-list>
+                <app-roadmap-list [feedbackList]="feedbackList" *ngIf="currentTab==tabs[1].title"  [tab]="tabs[1]"></app-roadmap-list>
+                <app-roadmap-list [feedbackList]="feedbackList" *ngIf="currentTab==tabs[2].title" [tab]="tabs[2]"></app-roadmap-list>
+            </div>
+        </div>
+    </div>
+</div>

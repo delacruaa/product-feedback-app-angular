@@ -1,0 +1,16 @@
+.gray {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center ;
+    gap: 10px;
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 700; ;
+}
+
+.white {
+    @extend .gray;
+    color: var(--white);
+}

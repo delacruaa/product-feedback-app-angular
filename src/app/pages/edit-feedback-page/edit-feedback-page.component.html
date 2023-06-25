@@ -1,0 +1,54 @@
+<div class="container">
+    
+
+    <div class="wrapper"   >
+        <app-go-back class="btn" [backTo]="'/'+id"></app-go-back>
+        <div class="form__wrapper">
+            <h1>Editing ‘{{feedback.title}}’</h1>
+
+            <form [formGroup] = "formGroup" (ngSubmit)="submitForm()" >
+                <div class="input__wrapper">
+                    <p class="title">Feedback Title</p>
+                    <p class="subtitle">Add a short, descriptive headline</p>
+                    <input [ngClass]="submitted &&  this.formGroup.get('title')?.invalid? 'input__error' : 'input'" type="text"  formControlName="title" >
+                    <div class="error__wrapper" *ngIf="submitted &&  this.formGroup.get('title')?.invalid">
+                        <div class="error" *ngIf="this.formGroup.get('title')?.errors?.['required']"> <small>Cant be empty</small>  </div>
+                    </div>
+                </div>
+                <div class="input__wrapper" >
+                    <p class="title">Category</p>
+                    <p class="subtitle">Choose a category for your feedback</p>
+                    <input [value]="currentSelect" class="input select" (keydown)="onKeyDown($event)"  (click)="openDropdown('select'); $event.stopPropagation()">
+                    <img class="img"  src="/assets/arrowBlue.svg" alt="arrow"/>
+                    <app-dropdown [contents]="selects" [currentContent]="currentSelect" (currentContentChanged)="currentContentChanged('select',$event)"  [isDropdownOpen]="isDropdownOpen" class="dropdown"></app-dropdown>
+                </div>
+                <div class="input__wrapper" >
+                    <p class="title">Update Status</p>
+                    <p class="subtitle">Change feedback state</p>
+                    <input [value]="currentStatus" class="input select" (keydown)="onKeyDown($event)"  (click)="openDropdown('status'); $event.stopPropagation()">
+                    <img class="img"  src="/assets/arrowBlue.svg" alt="arrow"/>
+                    <app-dropdown [contents]="status" [currentContent]="currentStatus" (currentContentChanged)="currentContentChanged('status',$event)"  [isDropdownOpen]="isDropdownStatusOpen" class="dropdown"></app-dropdown>
+                </div>
+                <div class="input__wrapper">
+                    <p class="title">Feedback Detail</p>
+                    <p class="subtitle">Include any specific comments on what should be improved, added, etc.</p>
+                    <textarea [ngClass]="submitted &&  this.formGroup.get('description')?.invalid? 'textarea__error' : 'textarea'" type="text" formControlName="description"></textarea>
+                    <div class="error__wrapper" *ngIf="submitted &&  this.formGroup.get('description')?.invalid">
+                        <div class="error" *ngIf="this.formGroup.get('description')?.errors?.['required']"> <small>Cant be empty</small>  </div>
+                    </div>
+                </div>
+
+                <div class="btn__wrapper">
+                    <app-button [buttonClass]="'delete__btn'" (click)="deleteFeedback()" >Delete</app-button>
+                    <app-button [buttonClass]="'cancel__btn'" routerLink="/" >
+                        Cancel
+                    </app-button>
+                    <app-button [buttonClass]="'add__btn'"  type="submit">
+                        Save Changes
+                    </app-button>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+</div>
