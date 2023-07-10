@@ -23,6 +23,21 @@ export class FeedbackItemComponent implements OnInit {
    
   }
 
+  getCountComments() {
+   let commentsCount  =0
+   let totalRepliesCount = 0;
+    if(this.feedback.comments?.length!=0 && this.feedback.comments?.length!=undefined) {
+      commentsCount = this.feedback.comments?.length
+       for (let i = 0; i < this.feedback.comments.length; i++) {
+        if (this.feedback.comments[i].replies) {
+          totalRepliesCount += this.feedback.comments[i].replies.length;
+        }
+       }
+      return totalRepliesCount +  commentsCount
+    }
+    return 0
+  }
+
   upvotedFeedback(id:number, upvoted:boolean,upvotes:number) {
     this.feedbackService.upvotedFeedback(id,upvoted,upvotes)
   }
