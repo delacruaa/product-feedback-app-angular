@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IFeedback } from 'src/app/models/IFeedback';
+import { IComments, IFeedback } from 'src/app/models/IFeedback';
 import { FeedbackService } from 'src/app/services/feedback.service';
 import { FilterService } from 'src/app/services/filter.service';
 
@@ -54,11 +54,11 @@ export class FeedbackListComponent implements OnInit {
         if(this.filterService.sortBy.value=='Most Comments') {
           this.feedbackListfiltered = data.filter(item=>item.status=='suggestion').sort((a, b) =>  {
             if(a.comments && b.comments) {
-              return  b.comments.length -a.comments.length
+              return  this.countComments(b.comments)-this.countComments(a.comments)
             }else if (a.comments ){
-              return  0 -a.comments.length
+              return  0-this.countComments(a.comments)
             }else if (b.comments ) {
-              return  b.comments.length -0 
+              return  this.countComments(b.comments)-0 
             }else {
               return  0-0 
             }
@@ -73,11 +73,11 @@ export class FeedbackListComponent implements OnInit {
         if(this.filterService.sortBy.value=='Least Comments') {
           this.feedbackListfiltered = data.filter(item=>item.status=='suggestion').sort((a, b) => {
             if(b.comments && a.comments) {
-              return  a.comments.length -b.comments.length
+              return  this.countComments(a.comments) -this.countComments(b.comments)
             }else if (b.comments ){
-              return  0 -b.comments.length
+              return  0 -this.countComments(b.comments)
             }else if (a.comments ) {
-              return  a.comments.length -0 
+              return  this.countComments(a.comments) -0 
             }else {
               return  0-0 
             }
@@ -94,5 +94,20 @@ export class FeedbackListComponent implements OnInit {
       this.error=true
       this.loading=false
     });
+  }
+
+  countComments(item:IComments[]) {
+    let commentsCount  =0
+    let totalRepliesCount = 0;
+    if(item?.length!=0 &&  item?.length!=undefined) {
+      commentsCount = item?.length
+       for (let i = 0; i < item.length; i++) {
+        if (item[i].replies) {
+          totalRepliesCount += item[i].replies.length;
+        }
+       }
+      return totalRepliesCount +  commentsCount
+    }
+    return 0
   }
 }
