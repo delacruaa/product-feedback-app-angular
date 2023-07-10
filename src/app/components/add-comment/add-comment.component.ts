@@ -21,12 +21,12 @@ export class AddCommentComponent  {
   addComment() {
     
     if (this.commentText) {
-      if(this.feedback.comments?.length) {
-        this.lastIndex =this.feedback.comments?.length
+      
+      if(this.feedback.comments?.length!=0 && this.feedback.comments?.length!=undefined ) {
+        this.lastIndex =this.feedback.comments.length
       }else {
         this.lastIndex=0
       }
-      this.lastIndex= this.feedback.comments?.length!
       this.notEmpty = '';
       let id= new Date().getTime()
       let data= {
